@@ -1,6 +1,5 @@
 # **User Agents**
 
-[Source](https://whatmyuseragent.com/)
 
 
 ## List Include
