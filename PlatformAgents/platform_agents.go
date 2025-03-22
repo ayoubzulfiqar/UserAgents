@@ -1,9 +1,7 @@
 package platformagents
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"time"
 
 	"github.com/ayoubzulfiqar/UserAgents/utils"
@@ -55,8 +53,8 @@ func getPlatformUserAgents() []string {
 
 func getPlatformLinks() []string {
 	var links []string = make([]string, 0)
-	var url string = "https://whatmyuseragent.com/platforms"
-	var base string = "https://whatmyuseragent.com"
+	var url string = utils.ReadEnv("PLATFORMAGENT")
+	var base string = utils.ReadEnv("BASEURL")
 	c := colly.NewCollector(
 		colly.IgnoreRobotsTxt(),
 	)
@@ -84,41 +82,4 @@ func getPlatformLinks() []string {
 	}
 	// 390
 	return links
-}
-
-func readPlatformLinks() []string {
-	file, err := os.Open("PlatformAgents/links.json") // Replace with your JSON file path
-	if err != nil {
-		fmt.Println("Error opening file:", err)
-	}
-	defer file.Close()
-
-	// Step 2: Read the file content
-	fileContent, err := os.ReadFile("PlatformAgents/links.json") // Read the entire file
-	if err != nil {
-		fmt.Println("Error reading file:", err)
-	}
-	var links []string
-	err = json.Unmarshal(fileContent, &links)
-	if err != nil {
-		fmt.Println("Error UnMarshalling JSON:", err)
-	}
-	// for _, link := range links {
-	// 	fmt.Printf("Link: %s\n", link)
-	// }
-	return links
-}
-func jsonData(fileName string, data []string) {
-	file, err := os.Create(fileName)
-	if err != nil {
-		fmt.Printf("File Creation Error: %s", err)
-	}
-	defer file.Close()
-
-	encoder := json.NewEncoder(file)
-	encoder.SetIndent("", "  ") // Pretty-print the JSON
-	encoderErr := encoder.Encode(data)
-	if encoderErr != nil {
-		fmt.Printf("EncoderError: %s", encoderErr)
-	}
 }

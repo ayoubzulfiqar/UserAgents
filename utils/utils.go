@@ -1,8 +1,10 @@
 package utils
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
@@ -95,4 +97,40 @@ func CreateTEXTUserAgents(fileName string, data []string) {
 	fmt.Println("File created successfully:", fileName)
 }
 
-func ReadTXT() {}
+func loadEnv() error {
+	file, err := os.Open(".env")
+	if err != nil {
+		fmt.Println("FileError:", err)
+		return err
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.TrimSpace(line) == "" || strings.HasPrefix(line, "#") {
+			continue // Skip empty lines and comments
+		}
+
+		parts := strings.SplitN(line, "=", 2)
+		if len(parts) != 2 {
+			continue // Skip malformed lines
+		}
+
+		key := strings.TrimSpace(parts[0])
+		value := strings.TrimSpace(parts[1])
+		os.Setenv(key, value)
+	}
+
+	return scanner.Err()
+
+}
+
+func ReadEnv(env string) string {
+	err := loadEnv()
+	if err != nil {
+		log.Fatal("Error loading .env file:", err)
+	}
+	envString := os.Getenv(env)
+	return envString
+}

@@ -2,10 +2,7 @@ package browseragents
 
 import (
 	"fmt"
-
-	// "strings"
 	"time"
-
 	"github.com/ayoubzulfiqar/UserAgents/utils"
 	"github.com/gocolly/colly"
 )
@@ -34,8 +31,8 @@ but we only need user-agents so nothing else matter
 
 func getBrowsersLinks() []string {
 	var links []string = make([]string, 0)
-	var url string = "https://whatmyuseragent.com/browser"
-	var base string = "https://whatmyuseragent.com"
+	var url string = utils.ReadEnv("BROWSERAGENT")
+	var base string = utils.ReadEnv("BASEURL")
 	c := colly.NewCollector(
 		colly.IgnoreRobotsTxt(),
 	)
