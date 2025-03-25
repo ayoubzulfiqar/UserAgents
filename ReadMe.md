@@ -88,3 +88,35 @@ func main() {
 ```
 
 [Latest](UserAgents.json)
+
+### Randomization
+
+It will give you random user Agent, If you want to change user agent you can set the time to change after certain period of time
+
+```go
+func main(){
+	// 
+	userAgent := Randomize("Your Path to JSON File")
+}
+```
+
+**After Every few Seconds**
+
+```go
+
+ticker := time.NewTicker(3 * time.Second)
+defer ticker.Stop()
+
+for {
+		select {
+		case <-ticker.C:
+			selected, err := prng.Randomize("Your JSOn File Path ")
+			if err != nil {
+				fmt.Println("Error:", err)
+				continue
+			}
+			fmt.Printf("[%s] Randomization: %s\n", time.Now().Format("15:04:05"), selected)
+		}
+	}
+
+```
