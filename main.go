@@ -1,6 +1,6 @@
 package main
 
-func main() {
-	// platformagents.PlatformAgents()
+// Application & Brand agent run later
 
+func main() {
 }

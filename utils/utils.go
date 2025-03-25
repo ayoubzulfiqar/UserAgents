@@ -132,5 +132,6 @@ func ReadEnv(env string) string {
 		log.Fatal("Error loading .env file:", err)
 	}
 	envString := os.Getenv(env)
+	envString = strings.Trim(envString, `"`)
 	return envString
 }
