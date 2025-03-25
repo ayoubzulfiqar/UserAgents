@@ -6,14 +6,12 @@
  **Implemented**
 - [Browser User-Agents](BrowserAgents/BrowserAgents.json)
 - [Platform UserAgents](PlatformAgents/PlatformAgents.json)
-
- **Coming Soon**
-
 - [Bots User-Agents](BotsAgents)
 - [Device User-Agents](DeviceAgents)
 - [Engine User-Agents](EngineAgents)
 - [Brand User-Agents](BrandAgents)
 - [Application User-Agents](ApplicationAgents)
+
 
 ### How to use
 
