@@ -1,10 +1,8 @@
 module github.com/ayoubzulfiqar/UserAgents
 
-go 1.24.1
+go 1.24.2
 
-require (
-	github.com/gocolly/colly v1.2.0
-)
+require github.com/gocolly/colly v1.2.0
 
 require (
 	github.com/PuerkitoBio/goquery v1.10.2 // indirect
