@@ -1,8 +1,5 @@
 package main
 
-/*
-
-
 import (
 	applicationagents "github.com/ayoubzulfiqar/UserAgents/ApplicationAgents"
 	botsagents "github.com/ayoubzulfiqar/UserAgents/BotsAgents"
@@ -18,8 +15,6 @@ func main() {
 
 	UserAgents()
 
-
-
 	// Other Types
 
 	applicationagents.ApplicationAgents()
@@ -31,8 +26,3 @@ func main() {
 	platformagents.PlatformAgents()
 
 }
-
-
-*/
-
-
